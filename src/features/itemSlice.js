@@ -15,6 +15,25 @@ export const getItems = createAsyncThunk("items/getItems", async () => {
 //   }
 // );
 
+// create post -------------------------
+
+export const createItems = createAsyncThunk(
+  "items/createItems",
+  async ({ values }) => {
+    return fetch(`http://localhost:8000/key`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: values.title,
+        date: values.date,
+      }),
+    }).then((res) => res.json());
+  }
+);
+
 //*************************** */
 
 // export const deleteItems = createAsyncThunk(
